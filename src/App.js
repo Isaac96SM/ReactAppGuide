@@ -8,7 +8,19 @@ class App extends Component {
       { name: 'Isaac', age: Math.floor(Math.random() * 30) }, 
       { name: 'David', age: Math.floor(Math.random() * 30) },
       { name: 'Diana', age: Math.floor(Math.random() * 30) }
-    ]
+    ],
+    otherState: 'some other value'
+  }
+
+  switchNameHandler = () => {
+    //alert('Was clicked!');
+    this.setState( {
+      persons: [
+        { name: 'Caracola', age: Math.floor(Math.random() * 30) }, 
+        { name: 'David', age: Math.floor(Math.random() * 30) },
+        { name: 'Diana', age: Math.floor(Math.random() * 30) }
+      ]
+    } );
   }
 
   render() {
@@ -16,10 +28,11 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <button>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Racing</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <button onClick={this.switchNameHandler} >Switch Name</button>
+        {this.state.persons.map((element, index) => {
+          return <Person name={element.name} age={element.age}/>
+        })}
+
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
