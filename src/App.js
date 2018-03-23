@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   switchNameHandler = () => {
-    //alert('Was clicked!');
     this.setState( {
       persons: [
         { name: 'Caracola', age: Math.floor(Math.random() * 30) }, 
@@ -30,7 +29,7 @@ class App extends Component {
         <p>This is really working!</p>
         <button onClick={this.switchNameHandler} >Switch Name</button>
         {this.state.persons.map((element, index) => {
-          return <Person name={element.name} age={element.age}/>
+          return <Person name={element.name} age={element.age} click={this.switchNameHandler} />
         })}
 
       </div>
